@@ -1,4 +1,3 @@
-import MantarMascot from "./MantarMascot";
 import StoreButtons from "./StoreButtons";
 import DownloadButton from "./DownloadButton";
 
@@ -8,8 +7,13 @@ export default function MascotCTA() {
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
         <div className="rounded-[22px] sm:rounded-[28px] bg-mantar-red/8 border border-mantar-red/15 px-5 sm:px-10 py-6 sm:py-8 flex flex-col lg:flex-row items-center gap-5 sm:gap-6 lg:gap-10">
           {/* Mascot */}
-          <div className="w-[120px] sm:w-[160px] flex-shrink-0 relative">
-            <MantarMascot winking />
+          <div className="w-[90px] sm:w-[120px] flex-shrink-0 relative">
+            <img
+              src="/mantar-mascot-cap.svg"
+              alt="Mantar"
+              className="w-full h-auto select-none"
+              draggable={false}
+            />
             <svg
               viewBox="0 0 24 24"
               className="absolute top-2 -right-2 w-5 h-5 text-mantar-gold"

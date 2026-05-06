@@ -1,6 +1,7 @@
 import StoreButtons from "./StoreButtons";
 import DownloadButton from "./DownloadButton";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -65,20 +66,26 @@ function HeroBg() {
 function HeroVisual() {
   return (
     <div className="relative h-full w-full max-w-[560px] mx-auto">
-      {/* Right phone: MantarPuan */}
+      {/* Right phone: Venue detail */}
       <div
         className="absolute right-0 sm:right-2 top-0 w-[180px] sm:w-[220px] lg:w-[260px] anim-float"
         style={{ transform: "rotate(6deg)" }}
       >
-        <PhonePuan />
+        <PhoneScreenshot
+          src="/hero-venue.png"
+          alt="Mantar — Mekan detay ekranı"
+        />
       </div>
 
-      {/* Left phone: Mantar AI */}
+      {/* Left phone: Discover home */}
       <div
         className="absolute left-0 sm:left-4 top-4 sm:top-6 w-[180px] sm:w-[220px] lg:w-[260px] anim-float-2"
         style={{ transform: "rotate(-6deg)" }}
       >
-        <PhoneAI />
+        <PhoneScreenshot
+          src="/hero-discover.png"
+          alt="Mantar — Keşfet ekranı"
+        />
       </div>
 
       {/* Sparkles */}
@@ -91,148 +98,25 @@ function HeroVisual() {
   );
 }
 
-/* ============= Phone: Mantar AI ============= */
-function PhoneAI() {
+/* ============= Phone frame with screenshot ============= */
+function PhoneScreenshot({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative phone-shadow rounded-[44px] bg-[#0b0b0c] p-[6px] aspect-[260/540]">
       <div className="relative h-full w-full rounded-[38px] overflow-hidden bg-white">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 260px, (min-width: 640px) 220px, 180px"
+          priority
+          className="object-cover"
+        />
         <div className="absolute top-2 left-1/2 -translate-x-1/2 h-[22px] w-[84px] rounded-full bg-[#0b0b0c] z-10" />
-        <div className="px-4 pt-10 pb-4">
-          {/* Top bar */}
-          <div className="flex items-center justify-between text-[11px] font-semibold">
-            <div className="flex items-center gap-1 text-mantar-red">
-              <MushroomGlyph />
-              mantar AI
-            </div>
-            <div className="flex items-center gap-1 text-mantar-red">
-              3 <MushroomGlyph small />
-            </div>
-          </div>
-
-          {/* Category chip */}
-          <div className="mt-5 inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-mantar-cream text-[11px] font-semibold">
-            <span className="h-4 w-4 rounded bg-mantar-red/15 grid place-items-center text-mantar-red">
-              <svg viewBox="0 0 24 24" className="w-2.5 h-2.5" fill="currentColor"><rect x="5" y="10" width="14" height="5" rx="2"/></svg>
-            </span>
-            Kahve
-          </div>
-
-          {/* Restaurant photo area */}
-          <div className="mt-3 relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-br from-[#6a4325] to-[#8c5a30]">
-            <svg viewBox="0 0 200 250" className="absolute inset-0 w-full h-full">
-              <rect width="200" height="250" fill="#7a5230" />
-              <rect x="30" y="40" width="140" height="110" rx="6" fill="#3a2518" opacity="0.5" />
-              <rect x="36" y="46" width="40" height="70" fill="#d4a574" opacity="0.6" />
-              <rect x="80" y="46" width="40" height="70" fill="#c99465" opacity="0.6" />
-              <rect x="124" y="46" width="40" height="70" fill="#d4a574" opacity="0.6" />
-              <circle cx="60" cy="190" r="8" fill="#f4d0a0" opacity="0.5" />
-              <circle cx="140" cy="186" r="8" fill="#f4d0a0" opacity="0.5" />
-            </svg>
-            {/* Card overlay */}
-            <div className="absolute bottom-2 left-2 right-2 bg-white rounded-xl px-3 py-2">
-              <div className="font-bold text-[13px] leading-tight">Luzzo</div>
-              <div className="text-[10px] text-mantar-muted leading-none mt-0.5">
-                İtalyan Mutfağı · Nişantaşı
-              </div>
-              <div className="flex items-center gap-2 mt-1 text-[10px]">
-                <span className="text-mantar-muted">0.3 km</span>
-                <span className="inline-flex items-center gap-0.5">
-                  <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 text-mantar-gold" fill="currentColor">
-                    <path d="M12 2l3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5 2 9.5l7-1L12 2z" />
-                  </svg>
-                  4.5
-                </span>
-              </div>
-              <div className="flex items-center gap-1 mt-1">
-                <span className="text-[8px] px-1.5 h-4 rounded bg-mantar-cream text-mantar-ink/70 grid place-items-center">Balçova</span>
-                <span className="text-[8px] px-1.5 h-4 rounded bg-mantar-cream text-mantar-ink/70 grid place-items-center">Akşam Yemeği</span>
-                <span className="text-[8px] px-1.5 h-4 rounded bg-mantar-cream text-mantar-ink/70 grid place-items-center">Romantik</span>
-              </div>
-            </div>
-          </div>
-
-          {/* X / Heart buttons */}
-          <div className="flex items-center justify-center gap-8 mt-4">
-            <button className="h-11 w-11 rounded-full bg-white border border-mantar-line grid place-items-center text-mantar-ink/60 shadow">
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.6} strokeLinecap="round">
-                <path d="M6 6l12 12M18 6L6 18" />
-              </svg>
-            </button>
-            <button className="h-11 w-11 rounded-full bg-emerald-400 grid place-items-center text-white shadow">
-              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-                <path d="M12 21s-8-5.5-8-11.5A4.5 4.5 0 0112 6a4.5 4.5 0 018 3.5C20 15.5 12 21 12 21z" />
-              </svg>
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
 }
 
-/* ============= Phone: MantarPuan ============= */
-function PhonePuan() {
-  return (
-    <div className="relative phone-shadow rounded-[44px] bg-[#0b0b0c] p-[6px] aspect-[260/540]">
-      <div className="relative h-full w-full rounded-[38px] overflow-hidden bg-white">
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 h-[22px] w-[84px] rounded-full bg-[#0b0b0c] z-10" />
-        <div className="px-4 pt-10 pb-4 flex flex-col h-full">
-          <div className="text-center text-[13px] font-bold text-mantar-red">MantarPuan</div>
-          {/* Huge count */}
-          <div className="mt-4 text-center">
-            <div className="inline-flex items-baseline gap-1.5">
-              <span className="font-display font-extrabold text-[42px] leading-none">120</span>
-              <MushroomGlyph large />
-            </div>
-            <div className="mt-2 text-[10px] text-mantar-muted">Seviye 3</div>
-            <div className="mt-2 h-1.5 w-full rounded-full bg-mantar-red/10 overflow-hidden">
-              <div className="h-full w-[80%] bg-mantar-red rounded-full" />
-            </div>
-            <div className="mt-1 text-[9px] text-mantar-muted text-right">120/150</div>
-          </div>
-
-          {/* Mekanlara göre mantarların */}
-          <div className="mt-4 text-[11px] font-bold">Mekanlara Göre Mantarların</div>
-          <div className="mt-2 space-y-1.5 flex-1">
-            {[
-              { n: "Luzzo", s: "İtalyan Mutfağı", v: 12 },
-              { n: "Big Chefs", s: "Kahve", v: 8 },
-              { n: "Vogue Café", s: "Kafe · Jet", v: 5 },
-            ].map((m) => (
-              <div key={m.n} className="flex items-center gap-2 p-1.5 rounded-lg bg-mantar-cream/60">
-                <div className="w-8 h-8 rounded-md bg-gradient-to-br from-[#8a5a30] to-[#6a4a2a] flex-shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-[10px] font-semibold leading-none">{m.n}</div>
-                  <div className="text-[8px] text-mantar-muted mt-0.5">{m.s}</div>
-                </div>
-                <div className="inline-flex items-center gap-0.5 text-[10px] font-bold text-mantar-red">
-                  {m.v} <MushroomGlyph small />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* QR button */}
-          <button className="mt-3 h-10 w-full rounded-full bg-mantar-red text-white text-[11px] font-bold inline-flex items-center justify-center gap-1.5">
-            <MushroomGlyph />
-            QR Kodumu Göster
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ============= Helpers ============= */
-function MushroomGlyph({ small = false, large = false }: { small?: boolean; large?: boolean }) {
-  const sz = large ? "w-6 h-6" : small ? "w-2.5 h-2.5" : "w-3.5 h-3.5";
-  return (
-    <svg viewBox="0 0 32 32" className={sz} fill="currentColor" aria-hidden>
-      <path d="M5 13c0-5 5-9 11-9s11 4 11 9c0 1-.6 1.6-1.6 1.6H6.6C5.6 14.6 5 14 5 13z" />
-      <rect x="12" y="14.6" width="8" height="12" rx="1.5" />
-    </svg>
-  );
-}
 
 function Sparkle({ className = "", size = 12 }: { className?: string; size?: number }) {
   return (
