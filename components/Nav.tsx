@@ -40,6 +40,18 @@ export default function Nav() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
+              href="/mantar-sef-ol"
+              className="hidden lg:inline-flex items-center justify-center h-9 px-3.5 rounded-full bg-mantar-cream-deep text-mantar-ink/80 font-semibold text-[12.5px] hover:bg-mantar-red hover:text-white transition whitespace-nowrap"
+            >
+              Mantar Şef Ol
+            </Link>
+            <Link
+              href="/mantar-gurme-ol"
+              className="hidden lg:inline-flex items-center justify-center h-9 px-3.5 rounded-full bg-mantar-cream-deep text-mantar-ink/80 font-semibold text-[12.5px] hover:bg-mantar-red hover:text-white transition whitespace-nowrap"
+            >
+              Mantar Gurme Ol
+            </Link>
+            <Link
               href="/mekan-ol"
               className="inline-flex items-center justify-center h-10 sm:h-11 px-3 sm:px-5 rounded-full border-2 border-mantar-red text-mantar-red font-semibold text-[12.5px] sm:text-[14px] hover:bg-mantar-red hover:text-white transition whitespace-nowrap"
             >
@@ -93,7 +105,23 @@ export default function Nav() {
                 </Link>
               ))}
             </nav>
-            <div className="flex flex-col sm:flex-row gap-2 mt-4 pt-4 border-t border-mantar-line/60">
+            <div className="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-mantar-line/60">
+              <Link
+                href="/mantar-sef-ol"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center justify-center h-11 px-3 rounded-full bg-mantar-cream-deep text-mantar-ink/85 font-semibold text-[13px] text-center"
+              >
+                Mantar Şef Ol
+              </Link>
+              <Link
+                href="/mantar-gurme-ol"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center justify-center h-11 px-3 rounded-full bg-mantar-cream-deep text-mantar-ink/85 font-semibold text-[13px] text-center"
+              >
+                Mantar Gurme Ol
+              </Link>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2 mt-2">
               <Link
                 href="/mekan-ol"
                 onClick={() => setOpen(false)}
