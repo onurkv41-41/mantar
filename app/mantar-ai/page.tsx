@@ -527,59 +527,16 @@ function MascotWithBubble() {
   );
 }
 
-/* ============= Mushroom Mascot (cute character) ============= */
+/* ============= Mushroom Mascot ============= */
 function MushroomMascot({ small = false }: { small?: boolean }) {
   const size = small ? "w-20 h-20" : "w-full h-full max-w-[280px] max-h-[320px]";
   return (
-    <svg viewBox="0 0 220 260" className={size} aria-hidden>
-      <defs>
-        <radialGradient id="capGradMantarAI" cx="0.5" cy="0.35" r="0.7">
-          <stop offset="0%" stopColor="#c73551" />
-          <stop offset="100%" stopColor="#8a1f33" />
-        </radialGradient>
-      </defs>
-      {/* Shadow */}
-      <ellipse cx="110" cy="245" rx="60" ry="8" fill="#000" opacity="0.1" />
-      {/* Stem (body) */}
-      <path
-        d="M70 140 Q 60 150 62 180 L 62 220 Q 62 240 82 244 L 138 244 Q 158 240 158 220 L 158 180 Q 160 150 150 140 Z"
-        fill="#c73551"
-      />
-      {/* Arms */}
-      <ellipse cx="52" cy="180" rx="10" ry="18" fill="#b92b45" transform="rotate(-15 52 180)" />
-      <ellipse cx="168" cy="185" rx="10" ry="18" fill="#b92b45" transform="rotate(15 168 185)" />
-      {/* Cap */}
-      <path
-        d="M25 140 Q 25 50 110 40 Q 195 50 195 140 Q 195 150 180 150 L 40 150 Q 25 150 25 140 Z"
-        fill="url(#capGradMantarAI)"
-      />
-      {/* Cap shine */}
-      <ellipse cx="85" cy="75" rx="22" ry="14" fill="#fff" opacity="0.15" />
-      {/* Eyes (happy closed) */}
-      <path
-        d="M85 115 Q 92 108 100 115"
-        stroke="#fff"
-        strokeWidth="4"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <path
-        d="M120 115 Q 128 108 135 115"
-        stroke="#fff"
-        strokeWidth="4"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Mouth with tongue */}
-      <path
-        d="M98 130 Q 110 145 122 130"
-        stroke="#fff"
-        strokeWidth="3.5"
-        fill="#fff"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <img
+      src="/mantar-mascot-cap.svg"
+      alt="Mantar"
+      className={`${size} object-contain select-none`}
+      draggable={false}
+    />
   );
 }
 
