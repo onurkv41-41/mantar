@@ -58,20 +58,20 @@ export default function Nav() {
                 href="/mekan-ol"
                 className="inline-flex items-center justify-center h-11 sm:h-12 px-4 sm:px-6 rounded-full bg-mantar-red text-white font-semibold text-[13px] sm:text-[15px] shadow-[0_8px_18px_-6px_rgba(174,41,64,0.55)] hover:bg-mantar-red-dark transition whitespace-nowrap"
               >
-                İşletme Kayıt Yap
+                İşletme Kayıt
               </Link>
 
-              {/* Animated speech bubble */}
+              {/* Animated speech bubble (below button) */}
               <div
-                className="hidden sm:block absolute -top-9 right-0 z-20 anim-float-bubble pointer-events-none"
+                className="hidden sm:block absolute top-full mt-3 right-0 z-20 anim-float-bubble pointer-events-none"
                 aria-hidden
               >
                 <div className="relative inline-flex items-center h-7 px-3 rounded-full bg-white border border-mantar-red/25 shadow-[0_8px_18px_-8px_rgba(174,41,64,0.35)] whitespace-nowrap">
+                  {/* Tail (pointing up to button) */}
+                  <span className="absolute -top-[6px] right-7 h-3 w-3 bg-white border-l border-t border-mantar-red/25 rotate-45" />
                   <span className="text-[11.5px] font-semibold text-mantar-red tracking-[-0.005em]">
-                    Mantar işletmesi olmak için hemen tıkla 👇
+                    👆 Mantar işletmesi olmak için hemen tıkla
                   </span>
-                  {/* Tail */}
-                  <span className="absolute -bottom-[6px] right-7 h-3 w-3 bg-white border-r border-b border-mantar-red/25 rotate-45" />
                 </div>
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function Nav() {
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center justify-center h-12 px-5 rounded-full bg-mantar-red text-white font-semibold text-[14.5px] text-center shadow-[0_8px_18px_-6px_rgba(174,41,64,0.55)]"
               >
-                İşletme Kayıt Yap
+                İşletme Kayıt
               </Link>
             </div>
           </div>
