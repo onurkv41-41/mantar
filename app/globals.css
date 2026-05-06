@@ -82,3 +82,12 @@ html, body {
 .anim-float    { animation: floaty 6s ease-in-out infinite; }
 .anim-float-2  { animation: floaty 7s ease-in-out infinite 0.8s; }
 .anim-float-3  { animation: floaty 8s ease-in-out infinite 1.5s; }
+
+@keyframes bubblePulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-4px) scale(1.03); }
+}
+.anim-float-bubble {
+  animation: bubblePulse 1.6s ease-in-out infinite;
+  transform-origin: bottom right;
+}

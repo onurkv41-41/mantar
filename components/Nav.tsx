@@ -53,12 +53,28 @@ export default function Nav() {
                 YAKINDA
               </span>
             </Link>
-            <Link
-              href="/mekan-ol"
-              className="inline-flex items-center justify-center h-10 sm:h-11 px-3 sm:px-5 rounded-full border-2 border-mantar-red text-mantar-red font-semibold text-[12.5px] sm:text-[14px] hover:bg-mantar-red hover:text-white transition whitespace-nowrap"
-            >
-              İşletme Ol
-            </Link>
+            <div className="relative">
+              <Link
+                href="/mekan-ol"
+                className="inline-flex items-center justify-center h-11 sm:h-12 px-4 sm:px-6 rounded-full bg-mantar-red text-white font-semibold text-[13px] sm:text-[15px] shadow-[0_8px_18px_-6px_rgba(174,41,64,0.55)] hover:bg-mantar-red-dark transition whitespace-nowrap"
+              >
+                İşletme Kayıt Yap
+              </Link>
+
+              {/* Animated speech bubble */}
+              <div
+                className="hidden sm:block absolute -top-9 right-0 z-20 anim-float-bubble pointer-events-none"
+                aria-hidden
+              >
+                <div className="relative inline-flex items-center h-7 px-3 rounded-full bg-white border border-mantar-red/25 shadow-[0_8px_18px_-8px_rgba(174,41,64,0.35)] whitespace-nowrap">
+                  <span className="text-[11.5px] font-semibold text-mantar-red tracking-[-0.005em]">
+                    Mantar işletmesi olmak için hemen tıkla 👇
+                  </span>
+                  {/* Tail */}
+                  <span className="absolute -bottom-[6px] right-7 h-3 w-3 bg-white border-r border-b border-mantar-red/25 rotate-45" />
+                </div>
+              </div>
+            </div>
 
             {/* Mobile burger */}
             <button
@@ -120,9 +136,9 @@ export default function Nav() {
               <Link
                 href="/mekan-ol"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center h-11 px-5 rounded-full border-2 border-mantar-red text-mantar-red font-semibold text-[14px] text-center"
+                className="inline-flex items-center justify-center h-12 px-5 rounded-full bg-mantar-red text-white font-semibold text-[14.5px] text-center shadow-[0_8px_18px_-6px_rgba(174,41,64,0.55)]"
               >
-                İşletme Ol
+                İşletme Kayıt Yap
               </Link>
             </div>
           </div>
