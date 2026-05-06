@@ -1,5 +1,4 @@
-import Link from "next/link";
-import MantarLogo from "@/components/MantarLogo";
+import Nav from "@/components/Nav";
 import GurmeForm from "./GurmeForm";
 
 export const metadata = {
@@ -21,43 +20,35 @@ export default function MantarGurmeOlPage() {
         aria-hidden
       />
 
-      {/* Top bar */}
-      <header className="relative z-10">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 py-5 sm:py-7">
-          <Link href="/" className="inline-block">
-            <MantarLogo width={100} className="sm:hidden" />
-            <MantarLogo width={124} className="hidden sm:block" />
-          </Link>
-        </div>
-      </header>
+      <Nav />
 
       {/* Hero */}
-      <section className="relative z-10 mx-auto max-w-[920px] px-4 sm:px-8 pt-4 sm:pt-8 pb-10 sm:pb-14 text-center">
-        <div className="inline-flex items-center gap-2 h-8 px-3 rounded-full bg-mantar-gold/20 border border-mantar-gold/40 text-[12px] font-bold tracking-[0.04em] text-[var(--color-feat-top-ink)]">
-          <VerifiedIcon className="w-3.5 h-3.5" />
+      <section className="relative z-10 mx-auto max-w-[920px] px-4 sm:px-8 pt-2 sm:pt-4 pb-6 sm:pb-8 text-center">
+        <div className="inline-flex items-center gap-2 h-7 px-3 rounded-full bg-mantar-gold/20 border border-mantar-gold/40 text-[11.5px] font-bold tracking-[0.04em] text-[var(--color-feat-top-ink)]">
+          <VerifiedIcon className="w-3 h-3" />
           GURME ÜYELİĞİ
         </div>
-        <h1 className="mt-4 font-display font-bold leading-[1.05] tracking-[-0.02em] text-[34px] sm:text-[48px] lg:text-[58px]">
+        <h1 className="mt-3 font-display font-bold leading-[1.05] tracking-[-0.02em] text-[28px] sm:text-[40px] lg:text-[48px]">
           <span className="text-mantar-red">Mantar</span> Gurme Ol
         </h1>
-        <p className="mt-4 sm:mt-5 text-[15px] sm:text-[17px] leading-[1.55] text-mantar-muted max-w-[600px] mx-auto">
+        <p className="mt-3 text-[14px] sm:text-[16px] leading-[1.5] text-mantar-muted max-w-[560px] mx-auto">
           Sosyal medyadaki etkini Mantar profilinde de göster — gurme rozetiyle
           öne çık, topluluğun güvenini kazan.
         </p>
       </section>
 
       {/* "Nedir?" Card */}
-      <section className="relative z-10 mx-auto max-w-[920px] px-4 sm:px-8 pb-12 sm:pb-16">
-        <div className="bg-white rounded-[24px] sm:rounded-[28px] border border-mantar-line/60 shadow-[0_30px_70px_-30px_rgba(30,10,15,0.08)] p-6 sm:p-10">
-          <div className="flex items-start gap-4 sm:gap-5">
-            <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-mantar-red/10 grid place-items-center flex-shrink-0">
-              <ChefHatIcon className="w-6 h-6 sm:w-7 sm:h-7 text-mantar-red" />
+      <section className="relative z-10 mx-auto max-w-[920px] px-4 sm:px-8 pb-6 sm:pb-8">
+        <div className="bg-white rounded-[20px] sm:rounded-[24px] border border-mantar-line/60 shadow-[0_20px_50px_-30px_rgba(30,10,15,0.08)] p-5 sm:p-7">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <div className="h-11 w-11 sm:h-12 sm:w-12 rounded-xl bg-mantar-red/10 grid place-items-center flex-shrink-0">
+              <ChefHatIcon className="w-5 h-5 sm:w-6 sm:h-6 text-mantar-red" />
             </div>
             <div className="flex-1 min-w-0">
-              <h2 className="font-display text-[22px] sm:text-[26px] font-bold tracking-[-0.01em]">
+              <h2 className="font-display text-[19px] sm:text-[22px] font-bold tracking-[-0.01em]">
                 Mantar Gurme nedir?
               </h2>
-              <p className="mt-3 text-[14.5px] sm:text-[15.5px] text-mantar-ink/80 leading-[1.7]">
+              <p className="mt-2 text-[14px] sm:text-[15px] text-mantar-ink/80 leading-[1.6]">
                 Mantar Gurme, Mantar kullanıcı hesapları içinde{" "}
                 <strong className="text-mantar-ink">gurme olan hesapları ayırt eden</strong>{" "}
                 bir üyelik türüdür. Çeşitli sosyal medya platformlarında reklam
@@ -71,17 +62,17 @@ export default function MantarGurmeOlPage() {
       </section>
 
       {/* Özellikleri */}
-      <section className="relative z-10 mx-auto max-w-[1080px] px-4 sm:px-8 pb-12 sm:pb-16">
-        <div className="text-center max-w-[640px] mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 h-7 px-3 rounded-full bg-[#f6a638]/15 text-[#b5651a] text-[12px] font-bold tracking-[0.05em]">
+      <section className="relative z-10 mx-auto max-w-[1080px] px-4 sm:px-8 pb-6 sm:pb-10">
+        <div className="text-center max-w-[640px] mx-auto mb-5 sm:mb-7">
+          <div className="inline-flex items-center gap-2 h-6 px-2.5 rounded-full bg-[#f6a638]/15 text-[#b5651a] text-[11.5px] font-bold tracking-[0.05em]">
             ÖZELLİKLER
           </div>
-          <h2 className="mt-3 font-display text-[24px] sm:text-[32px] font-bold tracking-[-0.01em]">
+          <h2 className="mt-2.5 font-display text-[20px] sm:text-[26px] font-bold tracking-[-0.01em]">
             Gurme olunca ne kazanırsın?
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <FeatureCard
             icon={<ProfileStripeIcon />}
             title="Turuncu çizgi & gurme rozeti"
@@ -112,7 +103,7 @@ export default function MantarGurmeOlPage() {
       </section>
 
       {/* Form */}
-      <section id="basvuru" className="relative z-10 mx-auto max-w-[920px] px-4 sm:px-8 pb-20 sm:pb-28">
+      <section id="basvuru" className="relative z-10 mx-auto max-w-[920px] px-4 sm:px-8 pb-12 sm:pb-16">
         <GurmeForm />
       </section>
     </div>

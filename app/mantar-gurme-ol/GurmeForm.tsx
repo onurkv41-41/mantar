@@ -95,21 +95,21 @@ export default function GurmeForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="bg-white rounded-[22px] sm:rounded-[28px] border border-mantar-line/60 shadow-[0_30px_70px_-30px_rgba(30,10,15,0.08)] p-6 sm:p-10"
+      className="bg-white rounded-[20px] sm:rounded-[24px] border border-mantar-line/60 shadow-[0_20px_50px_-30px_rgba(30,10,15,0.08)] p-5 sm:p-8"
     >
-      <div className="text-center mb-7 sm:mb-9">
-        <div className="inline-flex items-center gap-2 h-7 px-3 rounded-full bg-mantar-red/10 text-mantar-red text-[12px] font-bold tracking-[0.05em]">
+      <div className="text-center mb-5 sm:mb-7">
+        <div className="inline-flex items-center gap-2 h-6 px-2.5 rounded-full bg-mantar-red/10 text-mantar-red text-[11.5px] font-bold tracking-[0.05em]">
           BAŞVURU FORMU
         </div>
-        <h2 className="mt-3 font-display text-[22px] sm:text-[26px] font-bold tracking-[-0.01em]">
+        <h2 className="mt-2.5 font-display text-[20px] sm:text-[24px] font-bold tracking-[-0.01em]">
           Bilgilerini bizimle paylaş
         </h2>
-        <p className="mt-2 text-[13.5px] text-mantar-muted">
+        <p className="mt-1.5 text-[13px] text-mantar-muted">
           Twitter ve YouTube alanları isteğe bağlıdır.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
         <Field label="Ad Soyad" required>
           <input
             value={data.fullName}
