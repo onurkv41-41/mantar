@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { cities } from "turkey-map-react/lib/data";
 
 const ACTIVE_NAMES = new Set([
@@ -18,16 +18,35 @@ const COLOR_ACTIVE_HOVER_TINT = "#c43756";
 
 export default function TurkeyMapClient() {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const groupRef = useRef<SVGGElement | null>(null);
+  const [viewBox, setViewBox] = useState<string>("80 0 1050 585");
   const [hover, setHover] = useState<{
     name: string;
     x: number;
     y: number;
   } | null>(null);
 
+  // Compute the real bounding box of all rendered city paths and use that
+  // as the viewBox so the map is perfectly centered with consistent padding.
+  useLayoutEffect(() => {
+    if (!groupRef.current) return;
+    try {
+      const bbox = groupRef.current.getBBox();
+      const padX = bbox.width * 0.04;
+      const padY = bbox.height * 0.06;
+      setViewBox(
+        `${bbox.x - padX} ${bbox.y - padY} ${bbox.width + padX * 2} ${bbox.height + padY * 2}`
+      );
+    } catch {
+      // If getBBox fails (e.g. SVG not yet attached), keep fallback viewBox.
+    }
+  }, []);
+
   return (
     <div ref={wrapperRef} className="relative w-full">
       <svg
-        viewBox="80 0 1050 585"
+        viewBox={viewBox}
+        preserveAspectRatio="xMidYMid meet"
         className="w-full h-auto"
         role="img"
         aria-label="Mantar'ın aktif olduğu Türkiye illeri haritası"
@@ -70,6 +89,7 @@ export default function TurkeyMapClient() {
           </pattern>
         </defs>
 
+        <g ref={groupRef}>
         {cities.map((c) => {
           const isActive = ACTIVE_NAMES.has(c.name);
           const isHover = hover?.name === c.name;
@@ -101,6 +121,7 @@ export default function TurkeyMapClient() {
             />
           );
         })}
+        </g>
       </svg>
 
       {hover && (
