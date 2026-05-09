@@ -39,10 +39,10 @@ export default function SiteFooter() {
               Yakınındaki en iyi mekanları keşfet, puanla, yorum yap ve fırsatları kaçırma.
             </p>
             <div className="mt-5 flex items-center gap-2">
-              <SocialIcon href="#"><InstagramIcon /></SocialIcon>
-              <SocialIcon href="#"><XIcon /></SocialIcon>
-              <SocialIcon href="#"><YouTubeIcon /></SocialIcon>
-              <SocialIcon href="#"><TikTokIcon /></SocialIcon>
+              <SocialIcon href="https://www.instagram.com/mantarapp/" label="Instagram"><InstagramIcon /></SocialIcon>
+              <SocialIcon href="#" label="X"><XIcon /></SocialIcon>
+              <SocialIcon href="#" label="YouTube"><YouTubeIcon /></SocialIcon>
+              <SocialIcon href="#" label="TikTok"><TikTokIcon /></SocialIcon>
             </div>
           </div>
 
@@ -76,10 +76,22 @@ export default function SiteFooter() {
   );
 }
 
-function SocialIcon({ href, children }: { href: string; children: React.ReactNode }) {
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  const isExternal = href.startsWith("http");
   return (
     <a
       href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      aria-label={label}
       className="h-9 w-9 rounded-full bg-white/10 hover:bg-white hover:text-mantar-red text-white grid place-items-center transition"
     >
       {children}
