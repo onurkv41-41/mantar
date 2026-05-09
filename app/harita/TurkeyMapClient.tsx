@@ -39,15 +39,15 @@ export default function TurkeyMapClient() {
             id="mantarTile"
             x="0"
             y="0"
-            width="38"
-            height="52"
+            width="22"
+            height="30"
             patternUnits="userSpaceOnUse"
           >
-            <rect width="38" height="52" fill="#ae2940" />
+            <rect width="22" height="30" fill="#ae2940" />
             <MantarSilhouette
-              x={9}
-              y={5}
-              scale={0.43}
+              x={3}
+              y={2}
+              scale={0.27}
               opacity={0.22}
             />
           </pattern>
@@ -56,15 +56,15 @@ export default function TurkeyMapClient() {
             id="mantarTileHover"
             x="0"
             y="0"
-            width="38"
-            height="52"
+            width="22"
+            height="30"
             patternUnits="userSpaceOnUse"
           >
-            <rect width="38" height="52" fill={COLOR_ACTIVE_HOVER_TINT} />
+            <rect width="22" height="30" fill={COLOR_ACTIVE_HOVER_TINT} />
             <MantarSilhouette
-              x={9}
-              y={5}
-              scale={0.43}
+              x={3}
+              y={2}
+              scale={0.27}
               opacity={0.28}
             />
           </pattern>
