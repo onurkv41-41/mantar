@@ -5,31 +5,22 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Keşfet",
     links: [
-      { label: "Yakınımdaki Mekanlar", href: "/#yakinimdaki" },
-      { label: "Kategoriler", href: "/#kategoriler" },
-      { label: "Harita", href: "/#harita" },
+      { label: "Harita", href: "/harita" },
+      { label: "Haftanın Enleri", href: "/haftanin-enleri" },
+      { label: "Mantar AI", href: "/mantar-ai" },
     ],
   },
   {
-    title: "Mantar AI",
+    title: "Topluluk",
     links: [
-      { label: "Ne Yapsak AI", href: "/#ne-yapsak-ai" },
-      { label: "Önerilen Mekanlar", href: "/#onerilen" },
-      { label: "Nasıl Çalışır?", href: "/#nasil-calisir" },
-    ],
-  },
-  {
-    title: "MantarPuan",
-    links: [
-      { label: "Puanlarım", href: "/#puanlarim" },
-      { label: "Nasıl Puan Kazanırım?", href: "/#nasil-puan" },
-      { label: "Ödüller", href: "/#oduller" },
+      { label: "Mantar Gurme Ol", href: "/mantar-gurme-ol" },
+      { label: "Mantar Şef Ol", href: "/mantar-sef-ol" },
+      { label: "İşletme Kayıt", href: "/mekan-ol" },
     ],
   },
   {
     title: "Kurumsal",
     links: [
-      { label: "Hakkımızda", href: "/#hakkimizda" },
       { label: "İletişim", href: "/iletisim" },
       { label: "Gizlilik Politikası", href: "/gizlilik-politikasi" },
     ],
@@ -40,9 +31,9 @@ export default function SiteFooter() {
   return (
     <footer className="bg-mantar-red text-white">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-8 lg:px-12 py-10 sm:py-14">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand column */}
-          <div className="col-span-2 lg:col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <MantarLogo variant="white" width={120} />
             <p className="mt-4 text-[13.5px] leading-[1.55] text-white/80 max-w-[220px]">
               Yakınındaki en iyi mekanları keşfet, puanla, yorum yap ve fırsatları kaçırma.
