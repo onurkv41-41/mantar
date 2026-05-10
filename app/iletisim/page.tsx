@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Nav from "@/components/Nav";
+import { db } from "@/lib/firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const SUBJECTS = [
   "Genel Bilgi",
@@ -12,28 +14,82 @@ const SUBJECTS = [
   "Diğer",
 ];
 
+const EMPTY_FORM = {
+  fullName: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+};
+
 export default function IletisimPage() {
-  const [form, setForm] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const update = (patch: Partial<typeof form>) =>
     setForm((f) => ({ ...f, ...patch }));
 
-  const onSubmit = (e: React.FormEvent) => {
+  const valid =
+    form.fullName.trim().length >= 2 &&
+    /\S+@\S+\.\S+/.test(form.email) &&
+    form.message.trim().length >= 5;
+
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3500);
+    if (!valid || submitting) return;
+    setSubmitting(true);
+    setErrorMsg(null);
+    try {
+      await addDoc(collection(db, "contactMessages"), {
+        fullName: form.fullName.trim(),
+        email: form.email.trim().toLowerCase(),
+        phone: form.phone.trim(),
+        subject: form.subject.trim() || "Genel",
+        message: form.message.trim(),
+        status: "new",
+        source: "landing-iletisim",
+        createdAt: serverTimestamp(),
+      });
+      setForm(EMPTY_FORM);
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      console.error("[iletisim] gönderilemedi", err);
+      setErrorMsg(
+        "Mesajın gönderilemedi. Lütfen birazdan tekrar dene veya mantarkayit@gmail.com adresine yaz."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-mantar-cream">
       <Nav />
+
+      {/* Success toast */}
+      {submitted && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed top-4 left-1/2 -translate-x-1/2 z-[80] inline-flex items-center gap-3 h-12 px-5 rounded-full bg-emerald-600 text-white text-[14px] font-semibold shadow-[0_18px_40px_-10px_rgba(0,0,0,0.4)] animate-[toastIn_0.25s_cubic-bezier(.22,.61,.36,1)]"
+        >
+          <span className="grid place-items-center h-6 w-6 rounded-full bg-white/20">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={3.4} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12l5 5L20 7" />
+            </svg>
+          </span>
+          Mesajın bize ulaştı, en kısa sürede dönüş yapacağız.
+          <style>{`
+            @keyframes toastIn {
+              from { opacity: 0; transform: translate(-50%, -16px); }
+              to   { opacity: 1; transform: translate(-50%, 0); }
+            }
+          `}</style>
+        </div>
+      )}
 
       <main className="relative">
         {/* Hero */}
@@ -151,6 +207,12 @@ export default function IletisimPage() {
                     />
                   </Field>
 
+                  {errorMsg && (
+                    <div className="rounded-xl bg-mantar-red/10 border border-mantar-red/25 text-mantar-red text-[13.5px] px-4 py-3 leading-snug">
+                      {errorMsg}
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between gap-4 flex-wrap pt-2">
                     <div className="flex items-center gap-2 text-[13px] text-mantar-muted">
                       <ShieldIcon small />
@@ -158,10 +220,20 @@ export default function IletisimPage() {
                     </div>
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-mantar-red text-white font-semibold text-[15px] shadow-[0_10px_22px_-8px_rgba(174,41,64,0.55)] hover:bg-mantar-red-dark transition"
+                      disabled={!valid || submitting}
+                      className="inline-flex items-center gap-2 h-12 px-6 rounded-full bg-mantar-red text-white font-semibold text-[15px] shadow-[0_10px_22px_-8px_rgba(174,41,64,0.55)] hover:bg-mantar-red-dark transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {submitted ? "Gönderildi ✓" : "Mesajı Gönder"}
-                      {!submitted && <PaperPlane />}
+                      {submitting ? (
+                        <>
+                          <Spinner />
+                          Gönderiliyor...
+                        </>
+                      ) : (
+                        <>
+                          Mesajı Gönder
+                          <PaperPlane />
+                        </>
+                      )}
                     </button>
                   </div>
                 </form>
@@ -512,6 +584,14 @@ function PaperPlane() {
   return (
     <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden>
       <path d="M21.4 2.6L2.7 9.9c-.9.4-.8 1.7.2 1.9l6.5 1.7 2 6.8c.3 1 1.6 1.1 2 .1l6.9-16.3c.3-.8-.5-1.7-1.3-1.4z" />
+    </svg>
+  );
+}
+function Spinner() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-4 h-4 animate-spin" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2.4" opacity="0.25" />
+      <path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
     </svg>
   );
 }
